@@ -5,11 +5,15 @@ import { RouterModule } from '@angular/router';
 import { ADMIN_ROUTES } from './admin-routes';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ReportViewComponent } from './report-view/report-view.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
 	declarations:[
 	DashboardComponent,
-	NavbarComponent],
+	NavbarComponent,
+	ReportViewComponent,
+	UserComponent],
 	imports: [
 		CommonModule,
 		RouterModule.forRoot(ADMIN_ROUTES)
@@ -17,7 +21,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 	providers: [
 	],
 	exports: [
-		NavbarComponent
+		NavbarComponent,
+		ReportViewComponent
 	]
 })
 

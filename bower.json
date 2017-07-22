@@ -13,7 +13,8 @@
     "jasny-bootstrap":"latest",
     "datatables":"latest",
     "sweetalert":"latest",
-    "toastr":"latest"
+    "toastr":"latest",
+    "moment":"latest"
   },
   "install" : {
   	"path":"src/assets",
@@ -24,7 +25,8 @@
       "toastr":"bower_components/toastr/**",
       "datatables":"bower_components/datatables/**",
       "sweetalert":"bower_components/sweetalert/**",
-      "toastr":"bower_components/toastr/**"
+      "toastr":"bower_components/toastr/**",
+      "moment":"bower_components/moment/**"
   }
   },
   "license": "Stephen Galang Vinuya",

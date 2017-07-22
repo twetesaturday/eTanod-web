@@ -30,7 +30,8 @@
         "assets/bootstrap/js/bootstrap.min.js",
         "assets/parsleyjs/dist/parsley.js",
         "assets/toastr/toastr.min.js",
-        "assets/sweetalert/dist/sweetalert.min.js"
+        "assets/sweetalert/dist/sweetalert.min.js",
+        "assets/moment/moment.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

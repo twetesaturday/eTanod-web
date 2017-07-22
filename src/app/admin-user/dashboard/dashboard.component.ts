@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MapService, FirebaseService } from '../../shared/services';
+import { CRIMES } from './crimes.const';
 declare var $;
 @Component({
   selector: 'app-dashboard',
@@ -7,37 +8,48 @@ declare var $;
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  
-  crimes:Array<any> = [
-  {"name":"Carnapping",
-   "src":"assets/img/crimes/carnapping.png"},
-   {"name":"Extortion",
-   "src":"assets/img/crimes/extortion.png"},
-     {"name":"Homicide",
-   "src":"assets/img/crimes/homicide.png"},  {"name":"Motornapping",
-   "src":"assets/img/crimes/motornapping.png"},  {"name":"Murder",
-   "src":"assets/img/crimes/murder.png"},  {"name":"Physical",
-   "src":"assets/img/crimes/physical.png"},  {"name":"Rape",
-   "src":"assets/img/crimes/rape.png"},  {"name":"Robbery",
-   "src":"assets/img/crimes/robbery.png"},  {"name":"Theft",
-   "src":"assets/img/crimes/theft.png"},
-  ];
+  selectedCrime = 'All';
+  crimes:Array<any>;
   reportsArray:Array<any>;
-
+  selectedReport:any;
   constructor(
   	private mapService:MapService,
   	private firebase:FirebaseService
-  	) { }
+  	) {
+  		this.crimes = CRIMES;
+  		this.selectedReport = null;
+  	 }
+
+  filterCrime(name):void {
+  	this.mapService.showMarkerByName(name);
+  	this.selectedCrime = name;
+  }
+
+  showAllCrime():void {
+  	this.mapService.showAllMarkers();
+  	this.selectedCrime = 'All';
+  }
 
   ngOnInit() {
+  	let instance = this;
+  	$(document).on('click','.openReport',function() {
+  		instance.selectedReport = instance.reportsArray[$(this).attr('id')];
+  	    $('#report-view-modal').modal('show');
+  	});
+  	setInterval(()=> { this.selectedReport = instance.selectedReport },100);
   	this.mapService.initMap(document.getElementById('map'));
   	this.firebase.Get('reports').on('value',(reports) => {
   		console.log(reports.val());
   		this.reportsArray= Object.keys(reports.val()).map(function(k) { return reports.val()[k] });
   		console.log(this.reportsArray);
-  		this.reportsArray.forEach((report) => {
-  			
-  			this.mapService.addMarker(report.latitude,report.longitude,this.getCrimeTypeByName(report.type));	
+  		this.reportsArray.forEach((report,index) => {
+
+  			this.mapService.addMarker(report.latitude,
+  				report.longitude,
+  				this.getCrimeTypeByName(report.type),
+  				report,
+  				index
+  				);	
   		});
   	});
   }
