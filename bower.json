@@ -12,17 +12,19 @@
     "toastr":"latest",
     "jasny-bootstrap":"latest",
     "datatables":"latest",
-    "sweetalert":"latest"
+    "sweetalert":"latest",
+    "toastr":"latest"
   },
   "install" : {
   	"path":"src/assets",
   "sources": {
   	 "bootstrap": "bower_components/bootstrap/dist/**",
       "jquery": "bower_components/jquery/dist/**",
-      "parsleyjs":"bower_components/parsleyjs/dist/**",
+      "parsleyjs":"bower_components/parsleyjs/**",
       "toastr":"bower_components/toastr/**",
       "datatables":"bower_components/datatables/**",
-      "sweetalert":"bower_components/sweetalert/**"
+      "sweetalert":"bower_components/sweetalert/**",
+      "toastr":"bower_components/toastr/**"
   }
   },
   "license": "Stephen Galang Vinuya",
