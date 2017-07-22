@@ -4,14 +4,20 @@ import { RouterModule } from '@angular/router';
 
 import { ADMIN_ROUTES } from './admin-routes';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NavbarComponent } from './navbar/navbar.component';
+
 @NgModule({
 	declarations:[
-	DashboardComponent],
+	DashboardComponent,
+	NavbarComponent],
 	imports: [
 		CommonModule,
 		RouterModule.forRoot(ADMIN_ROUTES)
 	],
 	providers: [
+	],
+	exports: [
+		NavbarComponent
 	]
 })
 

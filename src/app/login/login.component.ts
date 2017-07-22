@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../shared/services';
+declare var $;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,9 +13,7 @@ export class LoginComponent implements OnInit {
   	) { }
 
   ngOnInit() {
-  	this.service.Add('reports',{
-  		"name":"haha"
-  	});
+  	
   	this.service.Get('reports').on('value',(snapshot:any) => {
   		console.log(snapshot.val());
   	});
